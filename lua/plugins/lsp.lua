@@ -8,7 +8,12 @@ return {
             local lspconfig = require('lspconfig')
             lspconfig.lua_ls.setup { capabilities = capabilities }
             lspconfig.pyright.setup { capabilities = capabilities }
-            lspconfig.clangd.setup { capabilities = capabilities }
+            lspconfig.clangd.setup {
+                capabilities = capabilities,
+                settings = {
+                    includePath = "/usr/local/include"
+                }
+            }
 
             -- Make sure the lsp for current file actually exists
             vim.api.nvim_create_autocmd('LspAttach', {
